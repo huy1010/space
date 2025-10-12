@@ -1,10 +1,12 @@
+import { REPO_PREFIX } from '@/constants'
+
 export const siteConfig = {
   author: 'Huy Bui',
   title: 'Vitesse theme for Astro',
   subtitle: 'Vitesse theme for Astro, supports Vue and UnoCSS.',
   description: 'A Minimal, SEO-friendly portfolio and blog theme for Astro.',
   image: {
-    src: `/hero.jpg`,
+    src: `/${REPO_PREFIX}/hero.jpg`,
     alt: 'Website Main Image',
   },
   email: 'buiminhhuy.work@gmail.com',
@@ -39,21 +41,21 @@ export const siteConfig = {
   ],
   header: {
     logo: {
-      src: `/favicon.svg`,
+      src: `/${REPO_PREFIX}/favicon.svg`,
       alt: 'Logo Image',
     },
     navLinks: [
       {
         text: 'Blog',
-        href: '/blog',
+        href: `/${REPO_PREFIX}/blog`,
       },
       {
         text: 'Notes',
-        href: '/blog/notes',
+        href: `/${REPO_PREFIX}/blog/notes`,
       },
       {
         text: 'Projects',
-        href: '/projects',
+        href: `/${REPO_PREFIX}/projects`,
       },
     ],
   },
@@ -61,11 +63,11 @@ export const siteConfig = {
     blogLinks: [
       {
         text: 'Blog',
-        href: '/blog',
+        href: `/${REPO_PREFIX}/blog`,
       },
       {
         text: 'Notes',
-        href: '/blog/notes',
+        href: `/${REPO_PREFIX}/blog/notes`,
       },
     ],
   },
@@ -73,11 +75,11 @@ export const siteConfig = {
     navLinks: [
       {
         text: 'Posts Props',
-        href: '/posts-props',
+        href: `/${REPO_PREFIX}/posts-props`,
       },
       {
         text: 'Markdown Style',
-        href: '/md-style',
+        href: `/${REPO_PREFIX}/md-style`,
       },
       {
         text: 'GitHub Repository',

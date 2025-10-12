@@ -1,4 +1,5 @@
 ---
+import { REPO_PREFIX } from '@/constants'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import siteConfig from '@/site-config'
 ---
@@ -14,7 +15,7 @@ import siteConfig from '@/site-config'
       >.
     </p>
     <p>
-      <img width="640" height="360" src="hero.jpg" alt="Hero Image" />
+      <img width="640" height="360" src={`/${REPO_PREFIX}/hero.jpg`} alt="Hero Image" />
     </p>
     <p>
       Based on first principles thinking, and you can also see from the picture
