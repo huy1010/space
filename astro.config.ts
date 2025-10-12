@@ -6,7 +6,7 @@ import UnoCSS from 'unocss/astro'
 
 export default defineConfig({
   site: 'https://huy1010.github.io',
-  base: '/space',
+  base: '/',
   server: {
     port: 1977,
   },
