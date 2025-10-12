@@ -5,8 +5,8 @@ import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 
 export default defineConfig({
-  site: 'https://huy1010.github.io/space',
-  base: '/',
+  site: 'https://huy1010.github.io',
+  base: '/space',
   server: {
     port: 1977,
   },
