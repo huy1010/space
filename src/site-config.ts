@@ -1,12 +1,10 @@
-import { REPO_PREFIX } from '@/constants'
-
 export const siteConfig = {
   author: 'Huy Bui',
   title: 'Vitesse theme for Astro',
   subtitle: 'Vitesse theme for Astro, supports Vue and UnoCSS.',
   description: 'A Minimal, SEO-friendly portfolio and blog theme for Astro.',
   image: {
-    src: `${REPO_PREFIX}/hero.jpg`,
+    src: `/hero.jpg`,
     alt: 'Website Main Image',
   },
   email: 'buiminhhuy.work@gmail.com',
@@ -41,7 +39,7 @@ export const siteConfig = {
   ],
   header: {
     logo: {
-      src: `${REPO_PREFIX}/favicon.svg`,
+      src: `/favicon.svg`,
       alt: 'Logo Image',
     },
     navLinks: [
