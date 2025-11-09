@@ -1,6 +1,10 @@
 <script lang="ts" setup>
-import { useDark, useToggle } from '@vueuse/core'
+import { useColorMode, useDark, useToggle } from '@vueuse/core'
 import { onMounted, watchEffect } from 'vue'
+
+useColorMode({
+  initialValue: 'dark',
+})
 
 const isDark = useDark()
 

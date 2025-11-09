@@ -2,12 +2,14 @@
 import { REPO_PREFIX } from '@/constants'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import siteConfig from '@/site-config'
-import { getPosts } from '@/utils/posts'
+import { getPosts, sortPostsByDate } from '@/utils/posts'
 import ListPosts from '@/components/ListPosts.vue'
 import ListProjects from '@/components/ListProjects.vue'
 import { projectData } from '@/pages/projects/data'
 
-const recentPosts = (await getPosts()).slice(0, 5)
+const blogPosts = await getPosts(undefined, 'blog')
+const notesPosts = await getPosts(undefined, 'notes')
+const recentPosts = [...blogPosts, ...notesPosts].sort(sortPostsByDate).slice(0, 5)
 const featuredProjects = projectData
   .flatMap((group) => group.projects)
   .filter((project) => project.href && project.href !== '/')

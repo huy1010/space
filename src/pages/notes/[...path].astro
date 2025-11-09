@@ -6,30 +6,36 @@ import { getPosts } from '@/utils/posts'
 import { REPO_PREFIX } from '@/constants'
 
 export async function getStaticPaths() {
-  const paths = siteConfig.page.links.map((nav) => {
-    const href = nav.href.replace(`/${REPO_PREFIX}/blog`, '')
+  const paths = siteConfig.page.links?.map((nav) => {
+    const href = nav.href.replace(`/${REPO_PREFIX}/notes`, '')
     return {
       params: {
         path: href === '' ? undefined : href.replace(/^\/+|\/+$/g, ''),
       },
     }
-  })
+  }) || [
+    {
+      params: {
+        path: undefined,
+      },
+    },
+  ]
   return paths
 }
 
 const { path } = Astro.params
 
-const posts = await getPosts(path)
+const posts = await getPosts(path, 'notes')
 
 function activeLink(pathname: string) {
   return Astro.url.pathname.replace(/\/+/g, '/').replace(/\/$/, '') === pathname
 }
 ---
 
-<BaseLayout title="Blog" description="List of all the blog posts." pageNav={true} pageOperate={true}>
+<BaseLayout title="Notes" description="List of all the notes." pageNav={true} pageOperate={true}>
   <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-8">
     {
-      siteConfig.page.links.map((nav) => (
+      siteConfig.page.links?.map((nav) => (
         <a
           aria-label={nav.text}
           class={`nav-link text-3xl font-bold ${activeLink(nav.href) ? 'opacity-80' : 'opacity-30 hover:opacity-50'}`}

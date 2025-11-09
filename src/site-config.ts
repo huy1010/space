@@ -35,7 +35,7 @@ export const siteConfig = {
       },
       {
         text: 'Notes',
-        href: `/${REPO_PREFIX}/blog/notes`,
+        href: `/${REPO_PREFIX}/notes`,
       },
       // {
       //   text: 'Projects',
@@ -44,14 +44,14 @@ export const siteConfig = {
     ],
   },
   page: {
-    blogLinks: [
+    links: [
       {
         text: 'Blog',
         href: `/${REPO_PREFIX}/blog`,
       },
       {
         text: 'Notes',
-        href: `/${REPO_PREFIX}/blog/notes`,
+        href: `/${REPO_PREFIX}/notes`,
       },
     ],
   },

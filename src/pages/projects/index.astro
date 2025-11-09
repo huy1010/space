@@ -6,7 +6,7 @@ import siteConfig from '@/site-config'
 import { REPO_PREFIX } from '@/constants'
 
 export async function getStaticPaths() {
-  const paths = siteConfig.page.blogLinks.map((nav) => {
+  const paths = siteConfig.page.links.map((nav) => {
     const href = nav.href.replace(`/${REPO_PREFIX}/blog`, '')
     return {
       params: {
