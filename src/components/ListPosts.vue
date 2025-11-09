@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { REPO_PREFIX } from '@/constants'
+
 interface Post {
   id: string
   slug: string
@@ -22,7 +24,7 @@ function getHref(post: Post) {
   if (post.data.redirect)
     return post.data.redirect
   const collection = post.collection || 'blog'
-  return collection === 'notes' ? `notes/${post.slug}` : `posts/${post.slug}`
+  return collection === 'notes' ? `/${REPO_PREFIX}/notes/${post.slug}` : `/${REPO_PREFIX}/posts/${post.slug}`
 }
 
 function getTarget(post: Post) {
