@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import TableOfContents from '@/components/TableOfContents.vue'
 import { type CollectionPosts } from '@/types'
 import { getPosts } from '@/utils/posts'
 
@@ -28,6 +29,7 @@ function getDate(date: string) {
 ---
 
 <BaseLayout title={title} description={description} pageType="article">
+  <TableOfContents client:load />
   <article class="prose">
     <h1>{title}</h1>
     <p op-50>

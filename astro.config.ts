@@ -2,6 +2,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import vue from '@astrojs/vue'
 import { defineConfig } from 'astro/config'
+import rehypeSlug from 'rehype-slug'
 import UnoCSS from 'unocss/astro'
 
 export default defineConfig({
@@ -11,7 +12,9 @@ export default defineConfig({
     port: 1977,
   },
   integrations: [
-    mdx(),
+    mdx({
+      rehypePlugins: [rehypeSlug],
+    }),
     sitemap(),
     UnoCSS({
       injectReset: true,
@@ -19,6 +22,7 @@ export default defineConfig({
     vue(),
   ],
   markdown: {
+    rehypePlugins: [rehypeSlug],
     shikiConfig: {
       themes: {
         light: 'github-light-default',

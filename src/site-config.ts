@@ -2,7 +2,7 @@ import { REPO_PREFIX } from '@/constants'
 
 export const siteConfig = {
   author: 'Huy Bui',
-  title: 'Huy Bui\'s space',
+  title: 'Huy\'s Space',
   subtitle: 'Space for my thoughts and notes',
   description: 'A minimal portfolio and blog theme for Astro.',
   image: {
