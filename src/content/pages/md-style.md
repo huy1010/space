@@ -32,7 +32,7 @@ Table Style:
 | EMAIL        | Displayed in contact section.                        |
 | NUM_POSTS    | Limit num of posts on home page.                     |
 | NUM_WORKS    | Limit num of works on home page.                     |
-| NUM_PROJECTS | Limit num of projects on home page.                  |
+| NUM_PROJECTS | Limit num of projects on home page.              `    |
 
 Code Snippet:
 
