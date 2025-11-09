@@ -2,14 +2,7 @@
 
 A minimal, SEO-friendly portfolio and blog
 
-## Preview
-
-![Preview Image](./public/preview.jpg)
-
 ## Features
-
-- 100 / 100 Lighthouse performance.
-- Responsive.
 - SEO-friendly.
 - Light / Dark Theme.
 - Markdown support.
@@ -48,50 +41,4 @@ You will then see the `dist` folder generated for publishing, which you can prev
 
 ```bash
 npm run preview
-```
-
-## Use pnpm / yarn
-
-If you want to use pnpm or yarn as a package management tool, please refer to the following steps.
-
-> If `preinstall` exists in `scripts`, remove it first.
-
-### pnpm
-
-Replace `"pre-commit": "npx lint-staged"` in package.json with `"pre-commit": "pnpm lint-staged"`.
-
-And replace `"*": "npm run lint:fix"` with `"*": "pnpm lint:fix"`.
-
-Like this:
-
-```json
-{
-  // ...
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "pnpm lint:fix"
-  }
-}
-```
-
-### yarn
-
-Replace `"pre-commit": "npx lint-staged"` in package.json with `"pre-commit": "yarn lint-staged"`.
-
-And replace `"*": "npm run lint:fix"` with `"*": "yarn lint:fix"`.
-
-Like this:
-
-```json
-{
-  // ...
-  "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
-  },
-  "lint-staged": {
-    "*": "yarn lint:fix"
-  }
-}
 ```
