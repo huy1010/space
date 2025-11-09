@@ -2,70 +2,121 @@
 import { REPO_PREFIX } from '@/constants'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import siteConfig from '@/site-config'
+import { getPosts } from '@/utils/posts'
+import ListPosts from '@/components/ListPosts.vue'
+import ListProjects from '@/components/ListProjects.vue'
+import { projectData } from '@/pages/projects/data'
+
+const recentPosts = (await getPosts()).slice(0, 5)
+const featuredProjects = projectData
+  .flatMap((group) => group.projects)
+  .filter((project) => project.href && project.href !== '/')
+  .slice(0, 6)
 ---
 
 <BaseLayout description={siteConfig.description}>
-  <article class="prose">
-    <h1 class="text-title">Vitesse theme</h1>
-    <p>Vitesse theme for Astro, supports Vue and UnoCSS.</p>
-    <p>
-      A minimal, SEO-riendly portfolio and blog theme for Astro. It's inspired by <a
-        target="_blank"
-        href="https://antfu.me">antfu.me</a
-      >.
+  <!-- Hero Section -->
+  <section class="mb-8 sm:mb-16">
+    <h1 class="text-title mb-4">
+      {siteConfig.author}
+    </h1>
+    <p class="text-xl opacity-80 mb-6">Software Engineer</p>
+    <p class="mb-8">
+      Building scalable applications and solving complex problems with clean code. Passionate about software
+      architecture, cloud technologies, and continuous learning.
     </p>
-    <p>
-      <img width="640" height="360" src={`/${REPO_PREFIX}/hero.jpg`} alt="Hero Image" />
-    </p>
-    <p>
-      Based on first principles thinking, and you can also see from the picture
-      <sup>👆</sup>, the goal of this theme is to
-      <b>make complex things as simple as possible</b>
-      . So, the core of this theme is the content, and the other elements are just auxiliary.
-    </p>
-    <p>Here are the features you don't need to worry about:</p>
-    <ul>
-      <li>100 / 100 Lighthouse performance</li>
-      <li>Responsive</li>
-      <li>SEO-friendly</li>
-      <li>Light / Dark Theme</li>
-      <li>Markdown support</li>
-      <li>
-        <a target="_blank" href="https://mdxjs.com/">MDX</a>
-        (components in your markdown) support
-      </li>
-      <li>
-        <a target="_blank" href="https://vuejs.org/">Vue</a>
-        SFC component support
-      </li>
-      <li>Auto generated sitemap and RSS Feed</li>
-      <li>
-        <a target="_blank" href="https://vueuse.org/">VueUse</a>
-        &
-        <a target="_blank" href="https://lodash.com/">Lodash</a>
-        support
-      </li>
-    </ul>
-    <p>
-      By the way, this theme use the <a target="_blank" href="https://unocss.dev/">UnoCSS</a> for style, it's fast.
-    </p>
-    <hr class="hr-line" />
-    <p>Find me on</p>
-    <p class="flex gap-x-4 gap-y-2 flex-wrap">
+    <div class="flex gap-x-4 gap-y-2 flex-wrap items-center">
       {
-        siteConfig.socialLinks.map((link) => (
-          <a aria-label={link.text} href={link.href} target="_blank" class="prose-link">
-            <i class:list={[link.icon]} />
-            {link.text}
-          </a>
-        ))
+        siteConfig.socialLinks
+          .filter((link) => link.href)
+          .map((link) => (
+            <a aria-label={link.text} href={link.href} target="_blank" class="prose-link flex items-center gap-2">
+              <i class:list={[link.icon]} />
+              <span>{link.text}</span>
+            </a>
+          ))
       }
-    </p>
-    <p>
-      If you have any questions, please email me at
-      <a prose-link aria-label={siteConfig.email} href={`mailto:${siteConfig.email}`}>
-        {siteConfig.email}
-      </a>.
-    </p>
-  </article>
+    </div>
+  </section>
+
+  <!-- Recent Posts -->
+  {
+    recentPosts.length > 0 && (
+      <section class="mb-8 sm:mb-16">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold">Recent Posts</h2>
+          <a href={`/${REPO_PREFIX}/blog`} class="prose-link text-sm flex items-center gap-1">
+            View all
+            <i class="i-ri-arrow-right-line" />
+          </a>
+        </div>
+        <ListPosts list={recentPosts} />
+      </section>
+    )
+  }
+
+  <!-- Featured Projects -->
+  {
+    featuredProjects.length > 0 && (
+      <section class="mb-8 sm:mb-16">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold">Featured Projects</h2>
+          <a href={`/${REPO_PREFIX}/projects`} class="prose-link text-sm flex items-center gap-1">
+            View all
+            <i class="i-ri-arrow-right-line" />
+          </a>
+        </div>
+        <ListProjects list={featuredProjects} />
+      </section>
+    )
+  }
+
+  <!-- Skills & Technologies
+  <section class="mb-8 sm:mb-16">
+    <h2 class="text-2xl font-bold mb-6">Skills & Technologies</h2>
+    <div class="prose max-w-none mb-0 min-h-fit">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Languages</h3>
+          <ul class="list-none p-0">
+            <li>TypeScript / JavaScript</li>
+            <li>Python</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Frameworks</h3>
+          <ul class="list-none p-0">
+            <li>React / Vue</li>
+            <li>Astro</li>
+            <li>Node.js</li>
+            <li>Express</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Cloud & Tools</h3>
+          <ul class="list-none p-0">
+            <li>AWS</li>
+            <li>Docker</li>
+            <li>Git</li>
+            <li>CI/CD</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Contact Section -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold mb-6">Get in Touch</h2>
+    <div class="prose max-w-none mb-0 min-h-fit">
+      <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+      <p>
+        Feel free to reach out via email at{' '}
+        <a prose-link aria-label={siteConfig.email} href={`mailto:${siteConfig.email}`}>
+          {siteConfig.email}
+        </a>
+        {' '}or connect with me on social media.
+      </p>
+    </div>
+  </section>
 </BaseLayout>

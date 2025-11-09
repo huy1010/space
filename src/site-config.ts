@@ -18,25 +18,9 @@ export const siteConfig = {
       header: 'i-ri-github-line',
     },
     {
-      text: 'Twitter',
-      href: '',
-      icon: 'i-simple-icons-x',
-      header: 'i-ri-twitter-x-line',
-    },
-    {
       text: 'Linkedin',
-      href: '',
+      href: 'https://www.linkedin.com/in/huy1010/',
       icon: 'i-simple-icons-linkedin',
-    },
-    {
-      text: 'Instagram',
-      href: '',
-      icon: 'i-simple-icons-instagram',
-    },
-    {
-      text: 'Youtube',
-      href: '',
-      icon: 'i-simple-icons-youtube',
     },
   ],
   header: {
@@ -53,10 +37,10 @@ export const siteConfig = {
         text: 'Notes',
         href: `/${REPO_PREFIX}/blog/notes`,
       },
-      {
-        text: 'Projects',
-        href: `/${REPO_PREFIX}/projects`,
-      },
+      // {
+      //   text: 'Projects',
+      //   href: `/${REPO_PREFIX}/projects`,
+      // },
     ],
   },
   page: {
