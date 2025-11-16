@@ -1,7 +1,7 @@
 ---
 title: JavaScript Notes
 description: Something about JavaScript.
-duration: 5min
+duration: 5 min
 date: 2025-10-21
 ---
 
