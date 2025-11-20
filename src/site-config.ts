@@ -37,6 +37,10 @@ export const siteConfig = {
         text: 'Notes',
         href: `/${REPO_PREFIX}/notes`,
       },
+      {
+        text: 'Following',
+        href: `/${REPO_PREFIX}/following`,
+      },
       // {
       //   text: 'Projects',
       //   href: `/${REPO_PREFIX}/projects`,

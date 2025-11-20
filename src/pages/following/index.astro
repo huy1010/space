@@ -1,0 +1,45 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getPosts } from '@/utils/posts'
+
+const posts = await getPosts(undefined, 'following')
+
+function getHref(post: Awaited<ReturnType<typeof getPosts>>[number]) {
+  return post.data.redirect || '#'
+}
+
+function getTarget(post: Awaited<ReturnType<typeof getPosts>>[number]) {
+  return post.data.redirect ? '_blank' : '_self'
+}
+---
+
+<BaseLayout title="Following" description="Authors and blogs I'm keeping up with.">
+  <section class="flex flex-col gap-6">
+    {
+      posts.length === 0 ? (
+        <p class="opacity-50">nothing here yet.</p>
+      ) : (
+        <ul class="flex flex-col gap-6">
+          {posts.map((post) => {
+            const href = getHref(post)
+            return (
+              <li>
+                <a
+                  class="text-xl font-semibold nav-link inline-flex items-center gap-2"
+                  href={href}
+                  target={getTarget(post)}
+                  rel={post.data.redirect ? 'noreferrer' : undefined}
+                  aria-label={post.data.title}
+                >
+                  <span>{post.data.title}</span>
+                  {post.data.redirect && <i class="i-ri-external-link-line text-lg" />}
+                </a>
+                <p class="opacity-60 text-sm break-all">{href}</p>
+              </li>
+            )
+          })}
+        </ul>
+      )
+    }
+  </section>
+</BaseLayout>

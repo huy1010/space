@@ -67,4 +67,26 @@ const notes = defineCollection({
   }),
 })
 
-export const collections = { pages, blog, notes }
+const following = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    tag: z.string().optional(),
+    redirect: z.string().url(),
+    date: z
+      .string()
+      .or(z.date())
+      .optional()
+      .transform((val: string | number | Date | undefined) => {
+        if (!val)
+          return undefined
+        return new Date(val).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        })
+      }),
+  }),
+})
+
+export const collections = { pages, blog, notes, following }
