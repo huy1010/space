@@ -23,7 +23,7 @@ The Strangler Fig pattern, popularized by Martin Fowler, offers a pragmatic appr
 
 This approach allows organizations to extract and replace functionality incrementally while maintaining a functioning system throughout the transition. It’s particularly effective for customer-facing applications where disruption must be minimized.
 
-<img src="../../../public/strangler-fig.png" alt="Strangler Fig pattern diagram showing gradual migration from monolith to microservices" />
+<img src="/space/strangler-fig.png" alt="Strangler Fig pattern diagram showing gradual migration from monolith to microservices" />
 
 This pattern brings some considerations:
 
